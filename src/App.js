@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./style/index.scss";
+import { Routes, Route } from "react-router-dom";
+import React, { Component } from "react";
+import Dashboard from "./components/Dashboard";
+import {Temperature} from './components/Temperature';
+import { Precipitation } from "./components/Precipitation";
+import { Wind } from "./components/Wind";
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Dashboard/>
+        <Routes>
+          <Route path="/" exact element={<Dashboard />} />
+          <Route path="temperature" exact element={<Temperature/>} />
+          <Route path="precipitations" exact element={<Precipitation/>} />
+          <Route path="wind" exact element={<Wind/>} />
+        </Routes>
+      </div>
+    );
+  }
 }
 
 export default App;
