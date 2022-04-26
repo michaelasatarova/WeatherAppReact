@@ -1,12 +1,20 @@
 import React from 'react';
+import { useLocation} from "react-router-dom"
 
+ const Precipitation = () => {
+  const location = useLocation();
+  const {state} = location;
 
-export const Precipitation = () =>{
+console.log(state)
+
   return (
-    <div className="Precipitation">
+    <div className=" main-margin Precipitation">
       <h1>Precipitation</h1>
+      {/* {state.fromTest.list.map((value, index ) => {
+         return <div key={index}>{value.wind.deg}</div>;
+      } )} */}
     </div>
   );
 }
 
-
+export default  Precipitation;

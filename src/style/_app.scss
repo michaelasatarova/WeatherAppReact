@@ -59,9 +59,39 @@ h3{
 .mt-3{
   margin-top: 3rem;
 }
+
+
+
+/************************
+    Carousel -react
+*************************/
+
+.carousel-root{
+  position: absolute;
+  bottom: 5rem;
+
+  .control-dots{
+    margin: -4px!important;
+    text-align: left !important;
+    padding-left: 5rem !important;
+  }
+
+  .dot{
+    width: 1rem !important;
+    height: 2px !important;
+    border-radius: 0 !important;
+    margin: 0 4px !important;
+  }
+
+  .carousel-status, .control-arrow{
+    display: none;
+  }
+}
+
 /************************
          Dashboard
 *************************/
+
 .Dashboard {
   display: grid;
   grid-template-columns: auto 350px;
@@ -75,11 +105,7 @@ h3{
 }
 
 .currentWeatherData {
-  position: absolute;
-  bottom: 5rem;
-  //left:50%;
-  //transform:translateX(-50%);
-  
+  text-align: left;
   .flex{
     display: flex;
     align-items: baseline;

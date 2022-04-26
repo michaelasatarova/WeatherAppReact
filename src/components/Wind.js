@@ -4,14 +4,16 @@ import { useLocation} from "react-router-dom"
 
 const Wind = () =>{
    const location = useLocation();
-   const {from} = location.state;
+   const {state} = location;
 
-console.log(from)
+console.log(state)
 
   return (
-    <div className="Wind">
+    <div className="main-margin Wind">
       <h1>Wind</h1>
-      <div>{from}</div>
+      {/* {state.from.list.map((value, index ) => {
+         return <div key={index}>{value.wind.deg}</div>;
+      } )} */}
     </div>
   );
 }
