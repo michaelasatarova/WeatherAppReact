@@ -1,0 +1,44 @@
+.sidebar {
+  height: calc(100vh - 2rem);
+  position: relative;
+  width: 350px;
+  .overlay {
+    height: 100%;
+    width: 100%;
+    background-color: $black;
+    opacity: 0.5;
+    position: absolute;
+  }
+
+  .sidebarContent {
+    position: relative;
+  }
+
+  .navigation {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+
+    a {
+      color: $white;
+      font-size: calc(#{$main-size} - 3px);
+      opacity: 0.5;
+      padding-bottom: 17px;
+
+      &:hover, &:focus, &:active {
+        opacity: 1;
+        border-bottom: 1px solid $white;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $white;
+        padding-bottom: 15px;
+      }
+    }
+  }
+
+  .line {
+    border: 0.5px solid $white;
+    opacity: 0.5;
+    margin: -2px;
+  }
+}

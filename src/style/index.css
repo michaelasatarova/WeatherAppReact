@@ -1,0 +1,21 @@
+/************************
+        General
+*************************/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.0509803922);
+  text-align: center;
+}
+
+/************************
+       Components
+*************************/
+.App {
+  border: 2px solid black;
+  background-color: red;
+}/*# sourceMappingURL=index.css.map */
