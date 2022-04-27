@@ -1,34 +1,4 @@
-/************************
-        General
-*************************/
-* {
-  box-sizing: border-box;
-}
 
-body {
-  width: 100%;
-  font-size: $main-size;
-  font-family: $main-font;
-  font-weight: 500;
-  background-color: $light;
-  margin: 0;
-  background-color: $black;
-  color: $white;
-}
-
-a {
-  text-decoration: none;
-}
-
-.h1{
-  font-size: calc(#{$heading} + 1rem);
-}
-.h2{
-  font-size: $heading;
-}
-h3{
-  font-size: calc(#{$heading} - 1rem);
-}
 /************************
          Components
   *************************/
@@ -44,6 +14,12 @@ h3{
 }
 .main-margin {
   margin: 5rem 2rem;
+  @include xl-down {
+    margin:  2rem;
+  }
+}
+.side-margin {
+  margin: 2rem;
 }
 
 .subtitle {
@@ -52,13 +28,8 @@ h3{
   margin: 0.7rem 0;
   font-size: calc(#{$main-size} - 2px);
 }
-.m-0{
-  margin: 0;
-}
 
-.mt-3{
-  margin-top: 3rem;
-}
+
 
 
 
@@ -69,6 +40,11 @@ h3{
 .carousel-root{
   position: absolute;
   bottom: 5rem;
+  width: 90%;
+
+  @include md-down{
+    display: none;
+  }
 
   .control-dots{
     margin: -4px!important;
@@ -94,14 +70,18 @@ h3{
 
 .Dashboard {
   display: grid;
-  grid-template-columns: auto 350px;
+  grid-template-columns: auto 420px;
 }
 
-.row {
+.row, .row2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 5rem;
+}
+.row2{
+  @include md-down{
+    display: none;
+  }
 }
 
 .currentWeatherData {
@@ -118,6 +98,48 @@ h3{
       margin-right: 5px;
     }
   }
+}
 
+/************************
+     7 days forecast
+*************************/
 
+.weatherContainer{
+  display: flex;
+  justify-content: space-between;
+
+  .weatherBox{
+    text-align: center;
+    .dayInWeek{
+      font-size: 0.9rem;
+    }
+    .weatherIco {
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+    .dailyTemperature{
+      font-size: 0.7rem;
+      font-weight: 300;
+      opacity: 0.7;
+    }
+  }
+}
+
+/************************
+     PAGES NAVI
+*************************/
+.pages{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width:100%;
+  position: absolute;
+  bottom: 0;
+
+  .naviBox{
+    padding: 20px ;
+    text-align: center;
+  }
+.activeBox{
+  background-color: transparentize($white, 0.8) ;
+}
 }

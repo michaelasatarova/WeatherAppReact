@@ -1,17 +1,37 @@
 .sidebar {
   height: calc(100vh - 2rem);
   position: relative;
-  width: 350px;
+  width: 420px;
+
+  @include md-down{
+    height: 100%;
+    position: absolute;
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+    left:0;
+    right: 0;
+  }
+
   .overlay {
     height: 100%;
     width: 100%;
     background-color: $black;
     opacity: 0.5;
     position: absolute;
+
+    @include md-down{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 
   .sidebarContent {
     position: relative;
+    padding-bottom: 3rem;
   }
 
   .navigation {
@@ -39,6 +59,7 @@
   .line {
     border: 0.5px solid $white;
     opacity: 0.5;
-    margin: -2px;
+    margin: -2px 0;
   }
 }
+

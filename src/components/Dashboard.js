@@ -7,6 +7,7 @@ import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { BsCloudsFill, BsCloudSnowFill, BsCloudSunFill } from "react-icons/bs";
 import { FaCloudShowersHeavy } from "react-icons/fa";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 //carousel
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -21,7 +22,7 @@ const Dashboard = () => {
   const [today, setToday] = useState("");
   const [date, setDate] = useState();
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     //fetch data
@@ -34,9 +35,9 @@ const Dashboard = () => {
 
     async function daysForecats() {
       const result = await axios(
-        "https://api.openweathermap.org/data/2.5/forecast?lat=47.5596&lon=7.5886&&appid=84d45d70ec8cb3346455466a3a04b5ee"
+        "https://api.openweathermap.org/data/2.5/onecall?lat=47.5596&lon=7.5886&cnt=7&appid=84d45d70ec8cb3346455466a3a04b5ee"
       );
-      console.log("my data", result.data);
+
       setDataWeather(result.data);
     }
 
@@ -103,17 +104,18 @@ const Dashboard = () => {
     }
   };
 
-  if (data) {
+  if (data && dataWeather) {
+    console.log("weather", dataWeather.daily);
     return (
-      <div className="Dashboard">
+      <div className={ !toggle ? " ": "Dashboard"}>
         <div>
-          <div className="row">
+          <div className="row2 p-5">
             <div>IMN</div>
-            <div onClick={toggleMenu}>
+            <div onClick={toggleMenu} className="cursor">
               <HiOutlineMenuAlt2 />
             </div>
           </div>
-
+          {}
           <Carousel showThumbs={false}>
             {data.list.map((item, index) => (
               <div key={index}>
@@ -142,8 +144,19 @@ const Dashboard = () => {
         </div>
 
         {toggle ? (
-          <div className="sidebar">
-            <div className="overlay"></div>
+          <div className={ !toggle ? "none": "sidebar"}>
+            <div className="overlay">
+            <div className="pages ">
+                <div className="naviBox ">
+                  <AiOutlineArrowLeft className="mx-1"/>
+                  <span>Previous</span>
+                </div>
+                <div className="naviBox activeBox">
+                  <span>Next</span>
+                  <AiOutlineArrowRight className="mx-1"/>
+                </div>
+              </div>
+            </div>
             <div className="sidebarContent">
               <div className="main-margin">
                 <div className="sidebar-title">
@@ -154,7 +167,7 @@ const Dashboard = () => {
               <nav className=" main-margin navigation">
                 <NavLink
                   to={{ pathname: "/" }}
-                  state={{ fromTemperature: data }}
+                  state={{ fromTemperature: data, dailyForecast: dataWeather }}
                 >
                   Temperature
                 </NavLink>
@@ -180,6 +193,19 @@ const Dashboard = () => {
               </ul> */}
               <Outlet />
             </div>
+
+              {/* next-prev-page */}
+              {/* <div className="pages ">
+                <div className="naviBox ">
+                  <AiOutlineArrowLeft className="mx-1"/>
+                  <span>Previous</span>
+                </div>
+                <div className="naviBox activeBox">
+                  <span>Next</span>
+                  <AiOutlineArrowRight className="mx-1"/>
+                </div>
+              </div> */}
+            
           </div>
         ) : (
           ""

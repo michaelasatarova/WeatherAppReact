@@ -1,0 +1,71 @@
+/************************
+        General
+*************************/
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    width: 100%;
+    font-size: $main-size;
+    font-family: $main-font;
+    font-weight: 500;
+    background-color: $light;
+    margin: 0;
+    background-color: $black;
+    color: $white;
+    overflow-x: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .h1{
+    font-size: calc(#{$heading} + 1rem);
+  }
+  .h2{
+    font-size: $heading;
+  }
+  .h3{
+    font-size: calc(#{$heading} - 1rem);
+  }
+  .h4{
+    font-size: calc(#{$heading} - 1rem);
+  }
+  .h5
+  {
+    font-size: calc(#{$heading} - 1rem);
+  }
+  .cursor{
+    cursor: pointer;
+  }
+  .none{
+    display: none;
+  }
+  
+  .m-0{
+    margin: 0;
+  }
+  .mt-0{
+    margin-top: 0;
+  }
+  .mt-{
+    margin-top: 1rem;
+  }
+  .mt-3{
+    margin-top: 3rem;
+  }
+  .my-1{
+   margin: 1rem 0;
+  }
+  .mx-1{
+    margin:0 1rem ;
+   }
+  
+  .p-5{
+    padding: 5rem;
+    @include xl-down{
+      padding: 2rem;
+    }
+  }
