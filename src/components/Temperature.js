@@ -72,7 +72,7 @@ const Temperature = () => {
     data: [
       {
         type: "splineArea",
-        toolTipContent: "Time {x}:00 - {y}°C",
+        toolTipContent: "Time {x} - {y}°C",
         color: "rgba(255,255,255,.7)",
         dataPoints: myData,
         xValueType: "dateTime",

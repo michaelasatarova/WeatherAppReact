@@ -1,0 +1,35 @@
+/************************
+         Dashboard
+*************************/
+
+.Dashboard {
+    display: grid;
+    grid-template-columns: auto 420px;
+  }
+  
+  .row, .row2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .row2{
+    @include md-down{
+      display: none;
+    }
+  }
+  
+  .currentWeatherData {
+    text-align: left;
+    .flex{
+      display: flex;
+      align-items: baseline;
+    }
+    .currentWeatherDataBox {
+      padding: 0rem 5rem;
+  
+      .weatherIco {
+        font-size: 24px;
+        margin-right: 5px;
+      }
+    }
+  }

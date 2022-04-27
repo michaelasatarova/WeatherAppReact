@@ -1,0 +1,30 @@
+/************************
+    Carousel -react
+*************************/
+
+.carousel-root{
+    position: absolute;
+    bottom: 5rem;
+    width: 90%;
+  
+    @include md-down{
+      display: none;
+    }
+  
+    .control-dots{
+      margin: -4px!important;
+      text-align: left !important;
+      padding-left: 5rem !important;
+    }
+  
+    .dot{
+      width: 1rem !important;
+      height: 2px !important;
+      border-radius: 0 !important;
+      margin: 0 4px !important;
+    }
+  
+    .carousel-status, .control-arrow{
+      display: none;
+    }
+  }

@@ -1,7 +1,12 @@
-@import 'mixins';
-@import 'variables';
-@import 'typo';
-@import 'general';
-@import 'sidebar';
-@import 'app';
-@import 'wind';
+// basic settings
+@import './general/mixins';
+@import './general/variables';
+@import './general/typo';
+@import './general/general';
+
+//components
+@import './components/dashboard';
+@import './components/app';
+@import './components/sidebar';
+@import './components/carousel';
+@import './components/wind';
