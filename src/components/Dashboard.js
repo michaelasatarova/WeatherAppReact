@@ -154,7 +154,7 @@ const Dashboard = () => {
               <nav className=" main-margin navigation">
                 <NavLink
                   to={{ pathname: "/" }}
-                  state={{ fromTemperature: dataWeather }}
+                  state={{ fromTemperature: data }}
                 >
                   Temperature
                 </NavLink>
