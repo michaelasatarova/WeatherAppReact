@@ -105,7 +105,6 @@ const Dashboard = () => {
   };
 
   if (data && dataWeather) {
-    console.log("weather", dataWeather.daily);
     return (
       <div className={ !toggle ? " ": "Dashboard"}>
         <div>
@@ -128,7 +127,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="currentWeatherDataBox">
-                    <div className="h2">{data.city.name} </div>
+                    <h2 className="h2">{data.city.name} </h2>
                     <div className="subtitle m-0">
                       {data.city.name} ({data.city.country})
                     </div>
@@ -159,9 +158,9 @@ const Dashboard = () => {
             </div>
             <div className="sidebarContent">
               <div className="main-margin">
-                <div className="sidebar-title">
+                <h1 className="h4">
                   Prognóstico Regional del Tiempo
-                </div>
+                </h1>
                 <div className="subtitle">{today}</div>
               </div>
               <nav className=" main-margin navigation">

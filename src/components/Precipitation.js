@@ -11,12 +11,9 @@ const Precipitation = () => {
   const location = useLocation();
   const { state } = location;
   const [weekWeatherForecast, setWeekWeatherForecast] = useState();
-
-  console.log("precipitations", state.fromTest.daily);
     
   const handleState =()=>{
    const newValue = state.fromTest.daily.slice(0,7)
-   console.log(newValue)
     setWeekWeatherForecast(newValue)
   }
   useEffect(() => {
@@ -66,7 +63,7 @@ const Precipitation = () => {
           {weekWeatherForecast.map((value, index) => {
             return (
               <div className="weatherBox">
-                <div className="dayInWeek">{getDateName(value.dt)}</div>
+                <div className="h5">{getDateName(value.dt)}</div>
                 {weatherIco(value.weather[0].main)}
                 <div className="dailyTemperature"> {temperatureInfo(value.feels_like.day)}</div>
               </div>

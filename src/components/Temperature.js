@@ -7,53 +7,36 @@ import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { BsCloudsFill, BsCloudSnowFill, BsCloudSunFill } from "react-icons/bs";
 import { FaCloudShowersHeavy } from "react-icons/fa";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Temperature = () => {
   const location = useLocation();
   const { state } = location;
-  // const [minTemp, setMinTemp] = useState(); //maximal and minimal temperature
-  // const [maxTemp, setMaxTemp] = useState(); //maximal and minimal temperature
   const [weekWeatherForecast, setWeekWeatherForecast] = useState();
   const [myData, setMyData] = useState();
   const arr = [];
 
   const handleState = () => {
     const newValue = state.dailyForecast.daily.slice(0, 7);
-    console.log("NEW VALLUE",newValue);
     setWeekWeatherForecast(newValue);
   };
 
   const convertToHours = (arg) => {
-let postDate = Date.parse(arg);
-//get current date and convert it to  miliseconds
-let time = new Date(postDate).getTime();
-let date = new Date(time);
-let h = date.getHours();
-console.log("date", new Date(arg) )
+    let postDate = Date.parse(arg);
+    //get current date and convert it to  miliseconds
+    let time = new Date(postDate).getTime();
+    let date = new Date(time);
+    let h = date.getHours();
 
- return new Date(arg);
-
-// const startingDay = new Date(1970, 0, 1); // Epoch
-// startingDay.setSeconds(arg);
-// console.log(startingDay)
-
+    return new Date(arg);
   };
-
-  // const test =(arg)=>{
-  //   let nwm = arg.map(x =>  Math.round(x.main.feels_like - 273.15) )
-  //   setMinTemp(Math.min(...nwm));
-  //   setMaxTemp(Math.max(...nwm));
-  // }
 
   useEffect(() => {
     function getTemperature(arg) {
       //loop over array of objects and create a new one
       for (var i = 0; i < arg.length; i++) {
-        console.log("data to push",arg[i].dt);
         arr.push({
-           x: convertToHours(arg[i].dt_txt),
-           y: Math.round(arg[i].main.feels_like - 273.15),
+          x: convertToHours(arg[i].dt_txt),
+          y: Math.round(arg[i].main.feels_like - 273.15),
           // x:convertToHours(arg[i].dt),
         });
       }
@@ -61,9 +44,7 @@ console.log("date", new Date(arg) )
 
     getTemperature(state.fromTemperature.list);
     handleState();
-    setMyData(arr.slice(0,5));
-    console.log("arr", arr);
-    //test(state.fromTemperature.list);
+    setMyData(arr.slice(0, 5));
   }, []);
 
   // canva chart
@@ -85,7 +66,7 @@ console.log("date", new Date(arg) )
       title: "",
       //suffix: ":00",
       interval: 4,
-      intervalType: "hour", 
+      intervalType: "hour",
     },
     height: 200,
     data: [
@@ -94,8 +75,8 @@ console.log("date", new Date(arg) )
         toolTipContent: "Time {x}:00 - {y}°C",
         color: "rgba(255,255,255,.7)",
         dataPoints: myData,
-         xValueType: "dateTime",
-         xValueFormatString: "DDD hh:mm TT",
+        xValueType: "dateTime",
+        xValueFormatString: "DDD hh:mm TT",
       },
     ],
   };
@@ -137,7 +118,9 @@ console.log("date", new Date(arg) )
             <div>
               <div className="h3">{state.fromTemperature.city.name}</div>
               <div className="subtitle  mt-0">
-                   {weatherIco(weekWeatherForecast[0].weather[0].main)} {temperatureInfo(weekWeatherForecast[0].temp.min)} - {temperatureInfo(weekWeatherForecast[0].temp.max)}
+                {weatherIco(weekWeatherForecast[0].weather[0].main)}{" "}
+                {temperatureInfo(weekWeatherForecast[0].temp.min)} -{" "}
+                {temperatureInfo(weekWeatherForecast[0].temp.max)}
               </div>
             </div>
             <HiOutlineMenuAlt2 />
@@ -153,7 +136,7 @@ console.log("date", new Date(arg) )
           {weekWeatherForecast.map((value, index) => {
             return (
               <div className="weatherBox">
-                <div className="dayInWeek">{getDateName(value.dt)}</div>
+                <div className="h5">{getDateName(value.dt)}</div>
                 {weatherIco(value.weather[0].main)}
                 <div className="dailyTemperature">
                   {" "}
@@ -163,10 +146,7 @@ console.log("date", new Date(arg) )
             );
           })}
         </div>
-
-        {/* next-prev-page */}
-
-        </div>
+      </div>
     );
   }
 };

@@ -40,6 +40,10 @@
     justify-content: space-between;
     margin-bottom: 0;
 
+    @include xl-down{
+      margin-top: 2rem ;
+    }
+
     a {
       color: $white;
       font-size: calc(#{$main-size} - 3px);
