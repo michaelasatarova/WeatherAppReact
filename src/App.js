@@ -9,10 +9,13 @@ class App extends Component {
     this.state = {
       today:0,
     };
-    this.handleBackground()
-  }   
 
-    handleBackground = () => {
+  }   
+  componentDidMount() {
+    this.handleBackground();
+ }
+
+    handleBackground  () {
       let today = new Date()
       let hour = today.getHours()
       this.setState({today: hour});
@@ -20,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className={this.state.today > 7 && this.state.today < 20  ? "App backgroundNight" : "App backgroundDay"}>
+      <div className={this.state.today > 7 && this.state.today < 20  ? "App backgroundDay" : "App backgroundNight"}>
         <Router/>
       </div>
     );

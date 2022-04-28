@@ -116,7 +116,7 @@ const Temperature = (props) => {
         <div className="weatherContainer side-margin">
           {weekWeatherForecast.map((value, index) => {
             return (
-              <div className="weatherBox">
+              <div className="weatherBox" key={index}>
                 <div className="h5">{getDateName(value.dt)}</div>
                 {weatherIco(value.weather[0].main)}
                 <div className="dailyTemperature">
