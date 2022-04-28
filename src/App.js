@@ -1,22 +1,27 @@
 import "./style/index.scss";
-import { Routes, Route } from "react-router-dom";
 import React, { Component } from "react";
-import Dashboard from "./components/Dashboard";
-import Temperature from './components/Temperature';
-import Precipitation  from "./components/Precipitation";
-import  Wind  from "./components/Wind";
+import Router from "./routs/Routs";
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);  
+    this.state = {
+      today:0,
+    };
+    this.handleBackground()
+  }   
+
+    handleBackground = () => {
+      let today = new Date()
+      let hour = today.getHours()
+      this.setState({today: hour});
+    };
+
   render() {
     return (
-      <div className="App">
-        <Routes>
-          <Route path="/" exact element={<Dashboard />} >
-            <Route path="" exact element={<Temperature/>} />
-            <Route path="precipitations" exact element={<Precipitation/>} />
-            <Route path="wind" exact element={<Wind/>} />
-          </Route>
-        </Routes>
+      <div className={this.state.today > 7 && this.state.today < 20  ? "App backgroundNight" : "App backgroundDay"}>
+        <Router/>
       </div>
     );
   }

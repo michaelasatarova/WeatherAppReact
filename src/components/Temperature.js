@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CanvasJSChart } from "canvasjs-react-charts";
+import Spinner from "./Spinner";
 
 //icons
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
@@ -8,7 +9,7 @@ import { MdOutlineWbSunny } from "react-icons/md";
 import { BsCloudsFill, BsCloudSnowFill, BsCloudSunFill } from "react-icons/bs";
 import { FaCloudShowersHeavy } from "react-icons/fa";
 
-const Temperature = () => {
+const Temperature = (props) => {
   const location = useLocation();
   const { state } = location;
   const [weekWeatherForecast, setWeekWeatherForecast] = useState();
@@ -20,24 +21,14 @@ const Temperature = () => {
     setWeekWeatherForecast(newValue);
   };
 
-  const convertToHours = (arg) => {
-    let postDate = Date.parse(arg);
-    //get current date and convert it to  miliseconds
-    let time = new Date(postDate).getTime();
-    let date = new Date(time);
-    let h = date.getHours();
-
-    return new Date(arg);
-  };
-
   useEffect(() => {
+    //create date for line chart
     function getTemperature(arg) {
       //loop over array of objects and create a new one
       for (var i = 0; i < arg.length; i++) {
         arr.push({
-          x: convertToHours(arg[i].dt_txt),
+          x: new Date(arg[i].dt_txt),
           y: Math.round(arg[i].main.feels_like - 273.15),
-          // x:convertToHours(arg[i].dt),
         });
       }
     }
@@ -47,24 +38,18 @@ const Temperature = () => {
     setMyData(arr.slice(0, 5));
   }, []);
 
-  // canva chart
+  // canva chart data
   //https://mail.google.com/mail/u/0/#starred/FMfcgxwKkHlsMCRLpdcBKhjqvbWbgCQh?compose=CllgCJZbhvHvlGKBHrVJDWqTFKzsKsSPRrdwftcbSRvFLKfbnxCjxzbsfQZzldcBWjmQPPRgbzL
 
   const options = {
     animationEnabled: true,
     exportEnabled: false,
     theme: "dark2", // "light1", "dark1", "dark2"
-    title: {
-      text: "",
-    },
     axisY: {
-      title: "",
       suffix: "°C",
       interval: 5,
     },
     axisX: {
-      title: "",
-      //suffix: ":00",
       interval: 4,
       intervalType: "hour",
     },
@@ -105,22 +90,18 @@ const Temperature = () => {
     }
   };
 
-  //GET TEMPERATURE
-  const temperatureInfo = (arg) => {
-    return Math.round(arg - 273.15) + "°C";
-  };
-
   if (weekWeatherForecast) {
     return (
       <div className=" Temperature">
+        <div></div>
         <div className="side-margin">
           <div className="row">
             <div>
               <div className="h3">{state.fromTemperature.city.name}</div>
               <div className="subtitle  mt-0">
-                {weatherIco(weekWeatherForecast[0].weather[0].main)}{" "}
-                {temperatureInfo(weekWeatherForecast[0].temp.min)} -{" "}
-                {temperatureInfo(weekWeatherForecast[0].temp.max)}
+                {weatherIco(weekWeatherForecast[0].weather[0].main)}
+                {Math.round(weekWeatherForecast[0].temp.min - 273.15) + "°C"} -
+                {Math.round(weekWeatherForecast[0].temp.max - 273.15) + "°C"}
               </div>
             </div>
             <HiOutlineMenuAlt2 />
@@ -139,8 +120,7 @@ const Temperature = () => {
                 <div className="h5">{getDateName(value.dt)}</div>
                 {weatherIco(value.weather[0].main)}
                 <div className="dailyTemperature">
-                  {" "}
-                  {temperatureInfo(value.feels_like.day)}
+                  {Math.round(value.feels_like.day - 273.15) + "°C"}
                 </div>
               </div>
             );
@@ -149,6 +129,11 @@ const Temperature = () => {
       </div>
     );
   }
+  else{
+    return(
+      <Spinner/>
+    )
+   }
 };
 
 export default Temperature;

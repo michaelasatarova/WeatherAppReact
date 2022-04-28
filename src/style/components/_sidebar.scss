@@ -1,7 +1,7 @@
 .sidebar {
   height: calc(100vh - 2rem);
   position: relative;
-  width: 420px;
+  width: $sidebar-width;
 
   @include md-down{
     height: 100%;
@@ -11,6 +11,10 @@
     margin: 0 auto;
     left:0;
     right: 0;
+  }
+
+  @include sm-down{
+    overflow: scroll;
   }
 
   .overlay {
@@ -26,6 +30,10 @@
       bottom: 0;
       left: 0;
       right: 0;
+    }
+    @include sm-down{
+      position: fixed;
+      bottom: 0;
     }
   }
 

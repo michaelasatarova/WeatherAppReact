@@ -8,8 +8,13 @@
   border-radius: 2rem;
   width: 100%;
   height: 100vh;
-  background-image: url("https://blog.radissonblu.com/wp-content/uploads/2015/01/basel-weekend-nightime.jpg");
   background-size: cover;
+}
+.backgroundDay{
+  background-image: url("https://cdn.getyourguide.com/img/location/540dc8ac5bddf-m1409922136.jpg/88.jpg");
+}
+.backgroundNight{
+  background-image: url("https://blog.radissonblu.com/wp-content/uploads/2015/01/basel-weekend-nightime.jpg");
 }
 .main-margin {
   margin: 5rem 2rem;
@@ -34,9 +39,12 @@
 .pages {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+  width: $sidebar-width;
   position: absolute;
   bottom: 0;
+  @include md-down{
+    width: 100%;
+  }
 
   .naviBox {
     padding: 20px;

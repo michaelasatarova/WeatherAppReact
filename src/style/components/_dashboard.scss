@@ -4,7 +4,7 @@
 
 .Dashboard {
     display: grid;
-    grid-template-columns: auto 420px;
+    grid-template-columns: auto $sidebar-width;
   }
   
   .row, .row2 {
