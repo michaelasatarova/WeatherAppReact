@@ -3,7 +3,6 @@ import { useLocation} from "react-router-dom"
 
 const Precipitation = () =>{
    const location = useLocation();
-   const {state} = location;
 
   return (
     <div className="main-margin Precipitation">

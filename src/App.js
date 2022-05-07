@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className={this.state.today > 7 && this.state.today < 20  ? "App backgroundDay" : "App backgroundNight"}>
+      <div className={this.state.today > 7 && this.state.today < 20  ? "App backgroundNight" : "App backgroundNight"}>
         <Router/>
       </div>
     );

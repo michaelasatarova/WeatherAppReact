@@ -4,7 +4,6 @@ import { useLocation} from "react-router-dom"
 
 const Wind = () =>{
    const location = useLocation();
-   const {state} = location;
 
   return (
     <div className="main-margin Wind">
